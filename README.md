@@ -12,6 +12,7 @@ cd Tor
 ls
 bash torattacker.sh
 ````
+![Tor](https://user-images.githubusercontent.com/34893261/images.png
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
