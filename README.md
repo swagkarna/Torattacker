@@ -12,8 +12,6 @@ cd To
 ls
 bash torattacker.sh
 ````
-![be](https://user-images.githubusercontent.com/34893261/43515905-332cf580-955a-11e8-9447-d32d0f8975c4.png
-
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
