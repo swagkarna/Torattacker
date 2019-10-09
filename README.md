@@ -1,4 +1,4 @@
-![](./TOR.png)
+![](./IMAGES/Tor.png)
 ----
 # The Onion Router
 Script to improve torshammer DoS attack.
