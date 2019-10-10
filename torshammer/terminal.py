@@ -141,7 +141,7 @@ def _tigetstr(self, cap_name):
 #######################################################################
 
 class ProgressBar:
-    
+    """
     A 3-line progress bar, which looks like::
     
                                 Header
@@ -150,7 +150,7 @@ class ProgressBar:
 
     The progress bar is colored, if the terminal supports color
     output; and adjusts to the width of the terminal.
-    
+    """
     BAR = '%3d%% ${GREEN}[${BOLD}%s%s${NORMAL}${GREEN}]${NORMAL}\n'
     HEADER = '${BOLD}${CYAN}%s${NORMAL}\n\n'
     
