@@ -1,8 +1,12 @@
 import sys, re
 
-class TerminalController:                                                                   """
-    A class that can be used to portably generate formatted output to                       a terminal...                                                                       ....
-    `TerminalController` defines a set of instance variables whose                          values are initialized to the control sequence necessary to
+class TerminalController:
+    """
+    A class that can be used to portably generate formatted output to
+    a terminal.
+    
+    `TerminalController` defines a set of instance variables whose
+    values are initialized to the control sequence necessary to
     perform a given action.  These can be simply included in normal
     output to the terminal:
 
@@ -11,7 +15,8 @@ class TerminalController:                                                       
 
     Alternatively, the `render()` method can used, which replaces
     '${action}' with the string required to perform 'action':
-                                                                                                >>> term = TerminalController()
+    
+        >>> term = TerminalController()
         >>> print term.render('This is ${GREEN}green${NORMAL}')
 
     If the terminal doesn't support a given action, then the value of
@@ -60,11 +65,11 @@ class TerminalController:                                                       
 
     # Foreground colors:
     BLACK = BLUE = GREEN = CYAN = RED = MAGENTA = YELLOW = WHITE = ''
-....
+    
     # Background colors:
     BG_BLACK = BG_BLUE = BG_GREEN = BG_CYAN = ''
     BG_RED = BG_MAGENTA = BG_YELLOW = BG_WHITE = ''
-....
+    
     _STRING_CAPABILITIES = """
     BOL=cr UP=cuu1 DOWN=cud1 LEFT=cub1 RIGHT=cuf1
     CLEAR_SCREEN=clear CLEAR_EOL=el CLEAR_BOL=el1 CLEAR_EOS=ed BOLD=bold
@@ -94,7 +99,7 @@ class TerminalController:                                                       
         # Look up numeric capabilities.
         self.COLS = curses.tigetnum('cols')
         self.LINES = curses.tigetnum('lines')
-........
+        
         # Look up string capabilities.
         for capability in self._STRING_CAPABILITIES:
             (attrib, cap_name) = capability.split('=')
@@ -133,21 +138,22 @@ def _tigetstr(self, cap_name):
 
 #######################################################################
 # Example use case: progress bar                                                                                                                                                #######################################################################
+#######################################################################
 
 class ProgressBar:
-    """
+    
     A 3-line progress bar, which looks like::
-....
+    
                                 Header
         20% [===========----------------------------------]
                            progress message
 
     The progress bar is colored, if the terminal supports color
     output; and adjusts to the width of the terminal.
-    """
+    
     BAR = '%3d%% ${GREEN}[${BOLD}%s%s${NORMAL}${GREEN}]${NORMAL}\n'
     HEADER = '${BOLD}${CYAN}%s${NORMAL}\n\n'
-........
+    
     def __init__(self, term, header):
         self.term = term
         if not (self.term.CLEAR_EOL and self.term.UP and self.term.BOL):
