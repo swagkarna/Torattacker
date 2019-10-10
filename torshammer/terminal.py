@@ -145,7 +145,7 @@ class ProgressBar:
     A 3-line progress bar, which looks like::
     
                                 Header
-        20% [===========----------------------------------]
+        20% [===========---------------------------------]
                            progress message
 
     The progress bar is colored, if the terminal supports color
