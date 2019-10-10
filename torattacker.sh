@@ -1,7 +1,7 @@
 !/usr/bin/bash
-# AttackTor: DDoS Tool v1.0 using Torshammer64;29;25M
+# AttackTor: DDoS Tool v1.4 using Torshammer
 # Coded by: The Sixty Nine
-# Github: https://github.com/thesixtynine/Tor
+# Github: https://github.com/thesixtynine/Tor.git
 # Facebook: akun.official.016
 # Instagram: @dey_016
 # WhatsApp: https://api.whatsapp.com/send?phone=6285775433901
@@ -35,7 +35,7 @@ printf "\e[1;35m    ██     ██\e[1;47\e[0m████\e[1;95m██   �
 printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
 printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
 printf "\n"
-printf "\e[100m:  Acess The Dark Web v1.4, Coded by: @thelinuxchoice   :\e[0m\n"
+printf "\e[100m:   Torshammer Beta v1.4, Coded by: @thesixtynine    :\e[0m\n"
 printf "\n"
 
 }
@@ -205,5 +205,5 @@ printf "\e[1;91m[\e[0m\e[1;77mx\e[1;91m] All Tor Connection Stopped.\e[0m\n"
 }
 
 banner
-#checkroot
+checkroot
 config
