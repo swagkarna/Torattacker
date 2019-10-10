@@ -1,5 +1,5 @@
 !/usr/bin/bash
-# AttackTor: DDoS Tool v1.4 using Torshammer
+# AttackTor: DDoS Tool Beta v1.4 using Torshammer
 # Coded by: The Sixty Nine
 # Github: https://github.com/thesixtynine/Tor.git
 # Facebook: akun.official.016
@@ -35,7 +35,7 @@ printf "\e[1;35m    ██     ██\e[1;47\e[0m████\e[1;95m██   �
 printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
 printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
 printf "\n"
-printf "\e[100m:   Torshammer Beta v1.4, Coded by: @thesixtynine    :\e[0m\n"
+printf "\e[100m:   TorAttack Beta v1.4, Coded by: @thesixtynine    :\e[0m\n"
 printf "\n"
 
 }
