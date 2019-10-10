@@ -1,4 +1,4 @@
-!/usr/bin/bash
+#!/usr/bin/bash
 # AttackTor: DDoS Tool Beta v1.4 using Torshammer
 # Coded by: The Sixty Nine
 # Github: https://github.com/thesixtynine/Tor.git
