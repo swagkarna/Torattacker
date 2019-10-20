@@ -1,4 +1,3 @@
-![](./IMAGES/Tor.png)
 # The Onion Router
 Script to improve torshammer Denial of Service attack.
 # Legal Disclaimer:
@@ -13,7 +12,7 @@ cd Tor
 ls
 bash torattacker.sh
 ````
-![](./IMAGES/Screenshoot.png)
+![](./Images/Tor.png)
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
