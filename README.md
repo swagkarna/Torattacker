@@ -7,7 +7,7 @@ Usage of TorAttack for attacking Script to improve torshammer DoS attack.Script 
 pkg update && pkg upgrade
 apt-get install tor
 apt-get install git
-git clone https://github.com/thesixtynine/Tor.git
+git clone https://github.com/thesixtynine/Tor
 cd Tor
 ls
 bash torattacker.sh
