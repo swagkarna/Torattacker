@@ -1,10 +1,7 @@
 #!/usr/bin/bash
 # AttackTor: DDoS Tool Beta v1.4 using Torshammer
-# Coded by: The Sixty Nine
-# Github: https://github.com/thesixtynine/Tor.git
-# Facebook: akun.official.016
-# Instagram: @dey_016
-# WhatsApp: https://api.whatsapp.com/send?phone=6285775433901
+# Coded by: @thesixtynine
+# Github: github.com/thesixtynine/Tor
 
 clear
 
