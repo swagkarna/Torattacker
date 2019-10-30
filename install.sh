@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-# Author: The Sixty Nine
-# Life Of Programmer
+# Coded by @thesixtynine
+# Github: github.com/thesixtynine/Tor
 
 clear
 
