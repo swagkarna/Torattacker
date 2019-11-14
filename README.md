@@ -5,14 +5,15 @@ Usage of TorAttack for attacking Script to improve torshammer DoS attack.Script 
 # Usage:
 ```
 pkg update && pkg upgrade
-apt-get install tor
 apt-get install git
+apt-get install bash
+apt-get install tor
 git clone https://github.com/thesixtynine/Tor
 cd Tor
 ls
 bash torattacker.sh
 ````
-![](./Images/Tor.png)
+![](./Images/Screenshot.png)
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
