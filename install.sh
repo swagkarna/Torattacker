@@ -1,6 +1,6 @@
 #!/usr/bin/bash
-# Coded by @thesixtynine
-# Github: github.com/thesixtynine/Tor
+# Coded by @thedarksec
+# Github: github.com/thedarksec/Tor
 
 clear
 
