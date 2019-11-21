@@ -8,12 +8,13 @@ pkg update && pkg upgrade
 apt-get install git
 apt-get install bash
 apt-get install tor
-git clone https://github.com/thesixtynine/Tor
+git clone https://github.com/thedarksec/Tor
 cd Tor
 ls
 bash torattacker.sh
 ````
-![](./Images/Screenshot.png)
+# Screenshot:
+![](./Images/Screenshoot.png)
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
