@@ -15,6 +15,7 @@ bash torattacker.sh
 ````
 # Screenshot:
 ![](./Images/Screenshoot.png)
+> Coded by @thedarksec, v1.4 Beta, Ddos Attack For Tor
 # Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 # LiberaPay:
