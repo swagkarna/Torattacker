@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # Torattacker: DDoS Tool Beta v1.4 using Torshammer
-# Coded by: @thesixtynine
-# Github: https://github.com/thesixtynine/Tor
+# Coded by: @thedarksec
+# Github: https://github.com/thedarksec/Tor
 
 clear
 
@@ -53,7 +53,7 @@ printf "\e[1;35m    ██     ██\e[1;47\e[0m████\e[1;95m██   �
 printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
 printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
 printf "\n"
-printf "\e[100m:    Tor Attacker Beta v1.4, Coded by: @thesixtynine     :\e[0m\n"
+printf "\e[100m:    Tor Attacker v1.4 Beta, Coded by: @thedarksec      :\e[0m\n"
 printf "\n"
 
 }
