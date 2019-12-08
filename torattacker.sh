@@ -1,16 +1,17 @@
 #!/usr/bin/bash
 # Torattacker: DDoS Tool Beta v1.4 using Torshammer
-# Coded by: @thedarksec
-# Github: https://github.com/thedarksec/Tor
+# Coded by Senja
+# Github: https://github.com/stepbystepexe/Torattacker
 
 clear
+reset
 
 trap 'printf "\n";stop;exit 1' 2
 
 checkroot() {
 
 if [[ "$(id -u)" -ne 0 ]]; then
-   printf "\e[1;77m Please, run this program as root!\n\e[0m"
+   printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPlease, run this program as root!\n\n\e[0m"
    exit 1
 fi
 
@@ -22,13 +23,8 @@ command -v tor > /dev/null 2>&1 || { echo >&2 "I require tor but it's not instal
 command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Run ./install.sh. Aborting."; exit 1; }
 command -v openssl > /dev/null 2>&1 || { echo >&2 "I require openssl but it's not installed. Run ./install.sh Aborting."; exit 1; }
 
-command -v awk > /dev/null 2>&1 || { echo >&2 "I require awk but it's not installed. Aborting."; exit 1; }
-command -v sed > /dev/null 2>&1 || { echo >&2 "I require sed but it's not installed. Aborting."; exit 1; }
-command -v cat > /dev/null 2>&1 || { echo >&2 "I require cat but it's not installed. Aborting."; exit 1; }
-command -v tr > /dev/null 2>&1 || { echo >&2 "I require tr but it's not installed. Aborting."; exit 1; }
-command -v wc > /dev/null 2>&1 || { echo >&2 "I require wc but it's not installed. Aborting."; exit 1; }
-command -v cut > /dev/null 2>&1 || { echo >&2 "I require cut but it's not installed. Aborting."; exit 1; }
-command -v uniq > /dev/null 2>&1 || { echo >&2 "I require uniq but it's not installed. Aborting."; exit 1; }
+command -v bash > /dev/null 2>&1 || { echo >&2 "I require bash but it's not installed. Aborting."; exit 1; }
+command -v python2 > /dev/null 2>&1 || { echo >&2 "I require python2 but it's not installed. Aborting."; exit 1; }
 
 if [ $(ls /dev/urandom >/dev/null; echo $?) == "1" ]; then
 echo "/dev/urandom not found!"
@@ -45,6 +41,7 @@ killall -HUP tor
 
 banner() {
 
+sleep 1
 printf "\n"
 printf "\e[1;35m ▄▄▄▄▄▄▄▄     \e[1;92m█▀\e[0m\n"
 printf "\e[1;35m ▀▀▀██▀▀▀   ▄████▄    ██▄████ \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
@@ -53,7 +50,7 @@ printf "\e[1;35m    ██     ██\e[1;47\e[0m████\e[1;95m██   �
 printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
 printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
 printf "\n"
-printf "\e[100m:    Tor Attacker v1.4 Beta, Coded by: @thedarksec      :\e[0m\n"
+printf "\e[100m:     Tor Attacker v1.0 Beta, Coded by: @stepbyatep     :\e[0m\n"
 printf "\n"
 
 }
@@ -178,6 +175,7 @@ multitor
 
 elif [[ $fail == "3" ]]; then
 clear
+reset
 banner
 config
 
