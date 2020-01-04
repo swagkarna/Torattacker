@@ -16,7 +16,6 @@ bash torattacker.sh
 ````
 #### Screenshot:
 ![](./Screenshoot.png)
-> Coded by @stepbystep, v1.0 Beta, Ddos Attack For The Onion Router
 ### Paypal:
 https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
 ### LiberaPay:
