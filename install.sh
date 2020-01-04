@@ -16,4 +16,5 @@ checkroot
     (trap '' SIGINT SIGTSTP && command -v curl > /dev/null 2>&1 || { printf >&2  "\e[0m[\e[1;92m!\e[0m] \e[1;77mInstalling cURL, please wait...\n\e[0m"; apt-get update > /dev/null && apt-get -y install curl > /dev/null || printf "\e[0m[\e[1;93m!\e[0m] \e[1;77mCurl Not installed.\n\e[0m"; }) & wait $!
     (trap '' SIGINT SIGTSTP && command -v bash > /dev/null 2>&1 || { printf >&2  "\e[0m[\e[1;92m!\e[0m] \e[1;77mInstalling Bash, please wait...\n\e[0m"; apt-get update > /dev/null && apt-get -y install curl > /dev/null || printf "\e[0m[\e[1;93m!\e[0m] \e[1;77mBash Not installed.\n\e[0m"; }) & wait $!
     (trap '' SIGINT SIGTSTP && command -v python2 > /dev/null 2>&1 || { printf >&2  "\e[0m[\e[1;92m!\e[0m] \e[1;77mInstalling Python2, please wait...\n\e[0m"; apt-get update > /dev/null && apt-get -y install curl > /dev/null || printf "\e[0m[\e[1;93m!\e[0m] \e[1;77mPython2 Not installed.\n\e[0m"; }) & wait $!
-        printf "\e[0m[\e[1;94m!\e[0m] \e[1;77mAll Requires are installed!\n\n\e[0m"
+        printf "\e[0m[\e[1;94m!\e[0m] \e[1;77mMy package installed!\n\n\e[0m"
+git clone https://github.com/dotfighter/torshammer
