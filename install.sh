@@ -3,7 +3,7 @@
 # Coded by Senja
 # Github: https://github.com/stepbystepexe/Torattacker
 clear
-trap 'echo exiting cleanly...!; exit 1;' SIGINT SIGTSTP
+trap 'echo exiting cleanly...; exit 1;' SIGINT SIGTSTP
 checkroot(){
 if [[ "$(id -u)" -ne 0 ]]; then
    printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPlease, run this program as root!\n\n\e[0m"
