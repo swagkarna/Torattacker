@@ -16,7 +16,7 @@ bash torattacker.sh
 ````
 #### Screenshot:
 <p align="center">
-  <img src="https://github.com/stepbystepexe/Torattacker/blob/master/Screenshot.png">
+  <img src="https://github.com/stepbystepexe/Torattacker/blob/master/Screenshoot.png">
 </a></p>
 
 ### Paypal:
