@@ -24,7 +24,7 @@ NB          : Manusia gax ada yang sempurna
 ```
 
 #### Daftar Fitur
-<u> TOR </u>
++ TOR
 
 #### Cara Menginstall:
 ```
