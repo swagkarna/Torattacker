@@ -23,6 +23,9 @@ NB          : Manusia gax ada yang sempurna
 [ Gunakan tool ini dengan bijak ]
 ```
 
+#### Daftar Fitur
+* TOR
+
 #### Cara Menginstall:
 ```
 git clone https://github.com/stepbystepexe/Torattacker
