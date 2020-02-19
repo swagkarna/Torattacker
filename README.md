@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://github.com/stepbystepexe/Torattacker/blob/master/Logo.png" width="200"/>
 </a></p>
-<h1 align="center">Tor Attacker</h1>
+<h1 align="center">Torattacker</h1>
 
 #### Informasi:
 ```
