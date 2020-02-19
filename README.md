@@ -3,7 +3,7 @@
 </a></p>
 <h1 align="center">Tor Attacker</h1>
 
-#### Informasi
+#### Informasi:
 ```
 Nama        : Torattacker
 Versi       : 4.5 (Update: 23 Februari 2020, 9:30 AM)
@@ -23,7 +23,7 @@ NB          : Manusia gax ada yang sempurna
 [ Gunakan tool ini dengan bijak ]
 ```
 
-#### Daftar Fitur
+#### Daftar Fitur:
 + TOR
 
 #### Cara Menginstall:
